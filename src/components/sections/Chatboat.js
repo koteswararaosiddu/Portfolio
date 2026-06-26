@@ -61,11 +61,7 @@ const sendMessage = async () => {
     // Read as text first
     const responseText = await response.text();
 
-<<<<<<< HEAD
-    console.log("Raw Response:", responseText);
-=======
-    console.log("Raw Response:",responseText);
->>>>>>> 9f0d2f90208a803f74c3874da135a8c0d5fb8a98
+    // console.log("Raw Response:",responseText);
 
     if (!responseText.trim()) {
       throw new Error("Empty response from server");
@@ -80,7 +76,7 @@ const sendMessage = async () => {
       throw new Error("Invalid JSON returned");
     }
 
-    console.log("Parsed:", data);
+    // console.log("Parsed:", data);
 
     let botReply = "No response received.";
 
