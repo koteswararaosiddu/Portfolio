@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0a0e14;
+  color: #b6c0cf;
+}
+
+::selection {
+  background-color: #2dd4bf;
+  color: #0a0e14;
+}
+
+/* visible keyboard focus, always */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #5eead4;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0e14;
+}
+::-webkit-scrollbar-thumb {
+  background: #1a2230;
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #283344;
+}
+
+.link-underline {
+  background-image: linear-gradient(#2dd4bf, #2dd4bf);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.25s ease;
+}
+.link-underline:hover {
+  background-size: 100% 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
