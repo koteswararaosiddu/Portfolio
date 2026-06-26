@@ -118,7 +118,7 @@ const sendMessage = async () => {
     // Read as text first
     const responseText = await response.text();
 
-    console.log("Raw Response:");
+    console.log("Raw Response:", responseText);
 
     if (!responseText.trim()) {
       throw new Error("Empty response from server");
@@ -176,12 +176,25 @@ const sendMessage = async () => {
   return (
     <>
       {/* Floating Button */}
-      <button
-        onClick={() => setOpen(!open)}
-        className="fixed bottom-6 right-6 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-cyan-400 text-2xl text-black shadow-xl transition-all duration-300 hover:scale-110"
-      >
-        {open ? "✖" : "💬"}
-      </button>
+      <div className="fixed bottom-6 right-20 z-50 group">
+  {/* Tooltip */}
+  <div className="absolute bottom-20 right-0 whitespace-nowrap rounded-xl bg-slate-900 px-4 py-2 text-sm font-medium text-white shadow-2xl opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:-translate-y-1">
+    👋 Hi! I&apos;m <span className="font-semibold text-cyan-400">Siddu AI</span>
+    <div className="absolute -bottom-2 right-6 h-4 w-4 rotate-45 bg-slate-900"></div>
+  </div>
+
+  {/* Button */}
+  <button
+    onClick={() => setOpen(!open)}
+    className="h-14 w-14 rounded-full transition-transform duration-300 hover:scale-110"
+  >
+    <img
+      src="/smooth pulsing.gif"
+      alt="Siddu AI"
+      className="h-full w-full rounded-full object-cover"
+    />
+  </button>
+</div>
 
       {/* Chat Window */}
       {open && (
