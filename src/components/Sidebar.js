@@ -34,7 +34,7 @@ export default function Sidebar() {
 
           {/* Profile Image */}
           <div className="flex-shrink-0">
-            <div className="h-20 w-60 overflow-hidden rounded-full border border-ink-600">
+            <div className="h-60 w-60 overflow-hidden rounded-full border border-ink-600">
               <Image
                 src="/profile.jpg"
                 alt={`Portrait of ${profile.name}`}
