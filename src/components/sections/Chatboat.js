@@ -119,7 +119,7 @@ const sendMessage = async () => {
   return (
     <>
       {/* Floating Button */}
-      <div className="fixed bottom-8 right-20 z-50 group">
+      <div className="fixed bottom-6 right-20 z-50 group">
   {/* Tooltip */}
   <div className="absolute bottom-20 right-0 whitespace-nowrap rounded-xl bg-slate-900 px-4 py-2 text-sm font-medium text-white shadow-2xl opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:-translate-y-1">
     👋 Hi! I&apos;m <span className="font-semibold text-cyan-400">Siddu AI</span>
@@ -129,7 +129,7 @@ const sendMessage = async () => {
   {/* Button */}
   <button
     onClick={() => setOpen(!open)}
-    className="h-15 w-15 rounded-full transition-transform duration-300 hover:scale-110"
+    className="h-14 w-14 rounded-full transition-transform duration-300 hover:scale-110"
   >
     <img
       src="/smooth pulsing.gif"
