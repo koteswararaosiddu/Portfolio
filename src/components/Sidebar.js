@@ -53,7 +53,7 @@ export default function Sidebar() {
 
         {/* Mobile Image */}
         <div className="mt-10 flex justify-center lg:hidden">
-          <div className="h-20 w-60 overflow-hidden rounded-br-full border border-ink-600">
+          <div className="h-40 w-45 overflow-hidden rounded-br-full border border-ink-600">
             <Image
               src="/profile.jpg"
               alt={`Portrait of ${profile.name}`}

@@ -21,65 +21,8 @@ useEffect(() => {
     });
 }, [messages]);
 
-// const sendMessage = async () => {
-//   if (!message.trim()) return;
 
-//   const userMessage = message;
 
-//   // Show user message
-//   setMessages((prev) => [
-//     ...prev,
-//     {
-//       role: "user",
-//       text: userMessage,
-//     },
-//   ]);
-
-//   setMessage("");
-//   setLoading(true);
-
-//   try {
-//     const response = await fetch(
-//       "https://v8n.vyaktimetrics.com/webhook/portfolio-chat",
-//       {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({
-//           message: userMessage,
-//         }),
-//       }
-//     );
-
-//     const data = await response.json() ;
-
-// console.log("hiii", data[0]?.output);
-
-// setMessages((prev) => [
-//   ...prev,
-//   {
-//     role: "assistant",
-//     text:
-//     data[0]?.output ||
-//       data.message ||
-//       "No response received.",
-//   },
-// ]);
-//   } catch (err) {
-//     console.error(err);
-
-//     setMessages((prev) => [
-//       ...prev,
-//       {
-//         role: "assistant",
-//         text: "❌ Unable to connect to AI Assistant.",
-//       },
-//     ]);
-//   }
-
-//   setLoading(false);
-// };
 const sendMessage = async () => {
   if (!message.trim() || loading) return;
 
@@ -118,7 +61,11 @@ const sendMessage = async () => {
     // Read as text first
     const responseText = await response.text();
 
+<<<<<<< HEAD
     console.log("Raw Response:", responseText);
+=======
+    console.log("Raw Response:",responseText);
+>>>>>>> 9f0d2f90208a803f74c3874da135a8c0d5fb8a98
 
     if (!responseText.trim()) {
       throw new Error("Empty response from server");
