@@ -1,6 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 
 export default function ChatBot() {
   const [open, setOpen] = useState(false);
@@ -42,7 +45,7 @@ const sendMessage = async () => {
 
   try {
     const response = await fetch(
-      "https://v8n.vyaktimetrics.com/webhook/portfolio-chat",
+      "https://flow.vyaktimetrics.com/webhook/portfolio-chat",
       {
         method: "POST",
         headers: {
@@ -197,15 +200,75 @@ const sendMessage = async () => {
           : "justify-start"
       }`}
     >
-      <div
-        className={`max-w-[80%] rounded-xl px-4 py-3 text-sm ${
-          msg.role === "user"
-            ? "bg-cyan-400 text-black"
-            : "bg-gray-800 text-white"
-        }`}
-      >
-        {msg.text}
+      <div className="flex gap-3">
+  {msg.role === "assistant" && (
+    <img
+      src="/smooth pulsing.gif"
+      alt="AI"
+      className="h-10 w-10 rounded-full border border-cyan-400"
+    />
+  )}
+
+  <div
+    className={`rounded-2xl px-4 py-3 shadow-lg ${
+      msg.role === "user"
+        ? "bg-cyan-400 text-black ml-auto"
+        : "bg-slate-800 text-white border border-slate-700"
+    }`}
+  >
+    <ReactMarkdown
+      remarkPlugins={[remarkGfm]}
+      components={{
+        h1: ({ children }) => (
+          <h1 className="text-xl font-bold mb-2">{children}</h1>
+        ),
+        h2: ({ children }) => (
+          <h2 className="text-lg font-semibold mt-3 mb-2 text-cyan-400">
+            {children}
+          </h2>
+        ),
+        p: ({ children }) => (
+          <p className="leading-7 mb-2">{children}</p>
+        ),
+        ul: ({ children }) => (
+          <ul className="list-disc pl-5 space-y-1">{children}</ul>
+        ),
+        ol: ({ children }) => (
+          <ol className="list-decimal pl-5 space-y-1">{children}</ol>
+        ),
+        strong: ({ children }) => (
+          <strong className="text-cyan-300">{children}</strong>
+        ),
+        code({ inline, children }) {
+          return inline ? (
+            <code className="rounded bg-gray-900 px-1 py-0.5 text-cyan-300">
+              {children}
+            </code>
+          ) : (
+            <SyntaxHighlighter language="javascript">
+              {String(children)}
+            </SyntaxHighlighter>
+          );
+        },
+      }}
+    >
+      {msg.text}
+    </ReactMarkdown>
+
+    {/* {msg.role === "assistant" && (
+      <div className="mt-3 flex gap-4 text-xs text-gray-400">
+        <button className="hover:text-cyan-400">👍</button>
+        <button className="hover:text-cyan-400">👎</button>
+        <button
+          onClick={() => navigator.clipboard.writeText(msg.text)}
+          className="hover:text-cyan-400"
+        >
+          📋 Copy
+        </button>
       </div>
+    )} */}
+  </div>
+</div>
     </div>
   ))}
   {loading && (
